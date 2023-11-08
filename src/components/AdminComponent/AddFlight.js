@@ -70,10 +70,10 @@ export default class AddFlight extends Component {
           </div>
           
     
-          <button style={{width:"350px"}} type="submit" className="btn btn-primary btn-block mb-4" value="Submit" onClick={this.onSubmit}>
+          <button style={{width:"350px"}} type="button" className="btn btn-primary btn-block mb-4" value="Submit" onClick={this.onSubmit}>
             Add
           </button>
-          <button style={{width:"350px"}} type="submit" className="btn btn-danger btn-block mb-4" value="Submit" onClick={this.onCancel}>
+          <button style={{width:"350px"}} type="button" className="btn btn-danger btn-block mb-4" value="Submit" onClick={this.onCancel}>
             Cancel
           </button>
         </form>
