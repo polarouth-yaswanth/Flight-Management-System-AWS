@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const FLIGHT_API_BASE_URL = "http://34.222.20.89:4005/user";
+const FLIGHT_API_BASE_URL = "http://51.20.35.122:4005/user";
 
 class BookingService{
     passengerBooking(passengerData){
