@@ -22,7 +22,7 @@ export default function Userdashboard() {
     e.preventDefault();
     setFlightData([]);
     const { data } = await axios.get(
-      `http://34.222.20.89:4005/flightdetails/${departure}/${destination}/${date}`
+      `http://51.20.35.122:4005/flightdetails/${departure}/${destination}/${date}`
     );
   
     console.log(data);
