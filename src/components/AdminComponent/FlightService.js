@@ -1,50 +1,29 @@
-import React, { Component } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from "axios";
 
-export default class Admindashboard extends Component {
-  addFlight() {
-    window.location.href="/addflight";
-    
-  }
-  viewFlight(){
-    window.location.href="/flightcrud";
-  }
-  addVacancy(){
-    window.location.href="/addvacancy";
-  }
-  Logout = (e1) =>{
-    //e1.preventDefault()
-    alert("Logged out successfully!")
-    window.location.href="/home";
-}
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#157DEC"}}>
-  <div className="container-fluid">
-    <a className="navbar-brand" href="/">Home</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarText">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li>
-        <button type="button" className="btn btn-dark" onClick={this.Logout}>Logout</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div style={{backgroundColor:"#DBF9DB",height:"700px"}}>
-  <h1 style={{color:"#C04000"}}><b>Admin Dashboard</b></h1>
-  <br />
-  <button style={{width:"170px"}} type="button" className="btn btn-primary btn-lg" onClick={() => this.addFlight()}>Add Flight</button><br /><br />
-<button style={{width:"170px"}} type="button" className="btn btn-primary btn-lg" onClick={() => this.viewFlight()}>View Flights</button><br /><br />
-<button style={{width:"170px"}} type="button" className="btn btn-primary btn-lg" onClick={() => this.addVacancy()}>Add vaccancy</button><br /><br />
-</div>
-<br />
+const FLIGHT_BASE_REST_API_URL = "http://51.20.35.122:4005/admin";
 
-      </div>
-    );
-  }
+
+const FLIGHT_BASE_REST_API_URL2 = "http://51.20.35.122:4005";
+
+class FlightService {
+
+    getFlight() {
+        return axios.get(FLIGHT_BASE_REST_API_URL+"/flightsavailable");
+    }
+    addFlight(Flight) {
+        return axios.post(FLIGHT_BASE_REST_API_URL+"/addflight", Flight);
+
+    }
+    deletFlight(id){
+        return axios.delete(FLIGHT_BASE_REST_API_URL+"/deleteflight/"+id);
+       
+    }
+    getFlightById(id){
+        return axios.get(FLIGHT_BASE_REST_API_URL+"/flight/"+id);
+    }
+    addVacancy(Seats){
+        return axios.post(FLIGHT_BASE_REST_API_URL2+"/addvacancy",Seats);
+    }
 }
+
+export default new FlightService()
